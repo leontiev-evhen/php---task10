@@ -36,42 +36,44 @@
             <div class="row">
                 <h2>Task 10</h2>
                 <div class="col-md-12">
-                    
-                    <?php if(isset($mysql)) { ?>
-                        <div class="col-md-6">MySql:<br>
-                            <?php
-                            if (is_array($mysql))
-                            {
-                                foreach($mysql as $item)
-                                {
-                                    echo $item.'<br>';
-                                }
-                            }
-                            else
-                            {
-                                echo $mysql;
-                            }
-                            ?>
-                        </div>
-                    <?php } ?>
-                    <?php if(isset($postgresql)) {?>
-                        <div class="col-md-6">PostgreSql:<br>
-                            <?php
-                            
-                            if (is_array($postgresql))
-                            {
-                                foreach($postgresql as $item)
-                                {
-                                    echo $item.'<br>';
-                                }
-                            }
-                            else
-                            {
-                                echo $postgresql;
-                            }
-                            ?>
-                        </div>
-                    <?php } ?>
+                    <h3>Distinct:</h3>
+                    <?php  echo $distinct;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>INNER JOIN:</h3>
+                    <?php  echo $innerJoin;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>LEFT JOIN:</h3>
+                    <?php  echo $leftJoin;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>RIGHT JOIN:</h3>
+                    <?php  echo $rightJoin;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>CROSS JOIN:</h3>
+                    <?php  echo $crossJoin;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>NATURAL JOIN:</h3>
+                    <?php  echo $naturalJoin;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>Group by:</h3>
+                    <?php  echo $groupBy;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>Having:</h3>
+                    <?php  echo $having;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>Order:</h3>
+                    <?php  echo $orderBy;?>
+                </div>
+                <div class="col-md-12">
+                    <h3>Limit:</h3>
+                    <?php  echo $limit;?>
                 </div>
             </div>
 

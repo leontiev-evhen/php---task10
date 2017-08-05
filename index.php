@@ -6,58 +6,78 @@ spl_autoload_register(function ($class_name) {
 
 try
 {
-    /*     $mysql = (new MySql())
-           ->insert('MY_TEST')
-           ->values(['key' => 'user11', 'data' => 'test'])
-           ->execute();*/
 
-   echo (new Sql())
+    /*============ distinct ===================*/
+    $distinct = (new Sql())
         ->distinct()
         ->select(['data'])
         ->from('MY_TEST')
-        ->join('left', 'MY_TEST2', 'm.key = m2.key')
-        ->where(['key' => 'test11-u'])
-        ->groupBy('key')
+        ->execute();
+
+    /*============ inner join ===================*/
+    $innerJoin = (new Sql())
+        ->select(['MY_TEST.data'])
+        ->from('MY_TEST')
+        ->join('inner', 'MY_TABLE', 'MY_TABLE.key = MY_TEST.key')
+        ->execute();
+
+    /*============ left join ===================*/
+    $leftJoin = (new Sql())
+        ->select(['MY_TEST.data'])
+        ->from('MY_TEST')
+        ->join('left', 'MY_TABLE', 'MY_TABLE.key = MY_TEST.key')
+        ->execute();
+
+    /*============ right join ===================*/
+    $rightJoin = (new Sql())
+        ->select(['MY_TEST.data'])
+        ->from('MY_TEST')
+        ->join('right', 'MY_TABLE', 'MY_TABLE.key = MY_TEST.key')
+        ->execute();
+
+    /*============ cross join ===================*/
+    $crossJoin = (new Sql())
+        ->select(['MY_TEST.data'])
+        ->from('MY_TEST')
+        ->join('cross', 'MY_TABLE')
+        ->execute();
+
+    /*============ natural join ===================*/
+    $naturalJoin = (new Sql())
+        ->select(['MY_TEST.data'])
+        ->from('MY_TEST')
+        ->join('natural', 'MY_TABLE')
+        ->execute();
+
+    /*============ group by ===================*/
+    $groupBy = (new Sql())
+        ->select(['data'])
+        ->from('MY_TEST')
+        ->groupBy('data')
+        ->execute();
+
+    /*============ having ===================*/
+    $having = (new Sql())
+        ->select(['data'])
+        ->from('MY_TEST')
+        ->groupBy('data')
         ->having('MIN(data) < 11')
-        ->orderBy('key', 'desk')
-        ->limit(2, 3)
         ->execute();
 
-    
-/*       $mysql = (new MySql())
-       ->update('MY_TEST')
-       ->set(['key' => 'test11-u', 'data' => 'test2'])
-       ->where(['key' => 'user11'])
-       ->execute();
-/*
-       $mysql = (new MySql())
-       ->delete('MY_TEST')
-       ->where(['key' => 'user11'])
-       ->execute();*/
-
-    /*========= Postgresql ===================*/
-
-/*    $postgresql = (new PostgreSql())
-        ->select('PG_TEST', ['data'])
-        ->where(['key' => 'user11-2'])
+    /*============ order ===================*/
+    $orderBy = (new Sql())
+        ->select(['data'])
+        ->from('MY_TEST')
+        ->orderBy('data', 'desc')
         ->execute();
 
-    /*
-       $postgresql =  (new PostgreSql())
-       ->insert('PG_TEST')
-       ->values(['key' => 'user11-2', 'data' => 'test2'])
-       ->execute();
-*/
-  /*    $postgresql =   (new PostgreSql())
-    ->update('PG_TEST')
-    ->set(['key' => 'test11-u', 'data' => 'test2'])
-    ->where(['key' => 'user11'])
-    ->execute();
-/*
-    $postgresql =  (new PostgreSql())
-    ->delete('PG_TEST')
-    ->where(['key' => 'user11'])
-    ->execute();*/
+    /*============ limit ===================*/
+    $limit = (new Sql())
+        ->select(['data'])
+        ->from('MY_TEST')
+        ->limit(2)
+        ->execute();
+
 
 }
 catch (Exception $e)
