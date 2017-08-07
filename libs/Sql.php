@@ -33,19 +33,19 @@ class Sql
         }
     }
 
-    protected function insert ()
+    public function insert ()
     {
         $this->insert = 'INSERT INTO ';
         return $this;
     }
 
-    protected function update ()
+    public function update ()
     {
         $this->update = 'UPDATE ';
         return $this;
     }
 
-    protected function delete ()
+    public function delete ()
     {
         $this->delete = 'DELETE FROM ';
         return $this;
@@ -63,7 +63,7 @@ class Sql
         return $this;
     }
 
-    protected function set ($fields)
+    public function set ($fields)
     {
         if ($this->checkArray($fields))
         {
@@ -76,7 +76,7 @@ class Sql
         }
     }
 
-    protected function values ($set)
+    public function values ($set)
     {
         if ($this->checkArray($set))
         {
